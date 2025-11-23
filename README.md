@@ -21,6 +21,6 @@ This repository hosts my personal portfolio website, built to showcase who I am,
 ```
 ## Or just manually copy paste the code.
 Thank You 
-
+Learning to collaborate and merge branches
 
 
