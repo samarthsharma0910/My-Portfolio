@@ -764,7 +764,14 @@ footer a { color: var(--g); text-decoration: none; }
   #cursor, #cursor-ring { display: none; }
 }
 @media (max-width: 500px) {
-  .stats-row { grid-template-columns: 1fr 1fr; }
+  .stats-row { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0.6rem; }
+  .stat-card { padding: 1rem 0.4rem; }
+  .stat-num { font-size: 1.4rem; }
+  .stat-label { font-size: 0.5rem; letter-spacing: 0.08em; }
+  .hero-subtitle { gap: 0.3rem 0.8rem; font-size: 0.78rem; }
+  .section-wrap { padding: 0 1.25rem; }
+  .contact-form { padding: 1.5rem; }
+  .glass, .cert-card, .skill-card { padding: 1.4rem; }
 }
 </style>
 </head>
@@ -974,7 +981,7 @@ footer a { color: var(--g); text-decoration: none; }
         <div class="chip-row">
           <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Pandas</span>
           <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/numpy/numpy-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">NumPy</span>
-          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/seaborn/seaborn-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Seaborn</span>
+          <span class="chip"><svg class="logo-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Seaborn</span>
           <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/matplotlib/matplotlib-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Matplotlib</span>
         </div>
       </div>
