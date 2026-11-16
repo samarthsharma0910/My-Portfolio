@@ -752,8 +752,8 @@ footer a { color: var(--g); text-decoration: none; }
   .projects-grid { grid-template-columns: 1fr; }
   .timeline::before { left: 20px; transform: none; }
   .tl-item { grid-template-columns: 40px 1fr; }
-  .tl-content { grid-column: 2; }
-  .tl-node-col { padding-top: 1.5rem; justify-content: flex-start; }
+  .tl-content { grid-column: 2; grid-row: 1; }
+  .tl-node-col { grid-column: 1; grid-row: 1; padding-top: 1.5rem; justify-content: flex-start; }
   .tl-empty { display: none; }
   .tl-item.right .tl-content:hover { transform: translateX(0); }
   .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
