@@ -380,7 +380,7 @@ section { position: relative; z-index: 10; }
   color: var(--text-muted);
 }
 #skills { padding: 7rem 0; }
-.skills-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
 .skill-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -430,6 +430,41 @@ section { position: relative; z-index: 10; }
   transition: all 0.2s;
 }
 .tag:hover { border-color: var(--g); color: var(--g); }
+.chip-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.45rem 0.8rem;
+  background: rgba(0,255,136,0.05);
+  border: 1px solid rgba(0,255,136,0.12);
+  border-radius: 8px;
+  font-family: var(--mono); font-size: 0.74rem; color: var(--text-mid);
+  transition: all 0.2s;
+}
+.chip:hover { border-color: var(--g); color: var(--g); transform: translateY(-2px); }
+.logo-img { width: 18px; height: 18px; object-fit: contain; flex-shrink: 0; }
+.logo-img.sm { width: 16px; height: 16px; }
+.logo-img.inv { filter: invert(1); }
+.social-btn .logo-img, .contact-link .logo-img { filter: invert(0.6); transition: filter 0.2s; }
+.social-btn:hover .logo-img, .contact-link:hover .logo-img { filter: invert(0.8) sepia(1) saturate(6) hue-rotate(90deg); }
+svg.logo-img { color: var(--g); }
+#certifications { padding: 7rem 0; }
+.cert-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+.cert-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.cert-card:hover { border-color: var(--border-g); box-shadow: 0 0 28px rgba(0,255,136,0.08); transform: translateY(-4px); }
+.cert-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.cert-eyebrow { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--g); }
+.cert-ico { width: 22px; height: 22px; color: var(--g); }
+.cert-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; }
+.cert-sub { font-size: 0.84rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+.cert-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.cert-meta span { font-family: var(--mono); font-size: 0.65rem; padding: 0.25rem 0.6rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); }
+.cert-img-link { display: block; margin-top: 1.2rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.cert-img-link img { display: block; width: 100%; height: auto; transition: transform 0.3s; }
+.cert-img-link:hover img { transform: scale(1.03); }
 #projects { padding: 7rem 0; }
 .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
 .proj-card {
@@ -704,6 +739,7 @@ footer a { color: var(--g); text-decoration: none; }
 @keyframes fadeout { to { opacity: 0; pointer-events: none; } }
 @media (max-width: 1024px) {
   .skills-grid { grid-template-columns: repeat(2,1fr); }
+  .cert-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: repeat(2,1fr); }
   .about-grid { grid-template-columns: 1fr; }
 }
@@ -755,9 +791,10 @@ footer a { color: var(--g); text-decoration: none; }
     </a>
     <nav>
       <a href="#about">About</a>
-      <a href="#skills">Stack</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#certifications">Certificates</a>
       <a href="#contact" class="nav-cta">Hire Me</a>
     </nav>
     <button id="hamburger" aria-label="Menu">
@@ -766,9 +803,10 @@ footer a { color: var(--g); text-decoration: none; }
   </div>
   <div id="mobile-nav">
     <a href="#about">About</a>
-    <a href="#skills">Stack</a>
+    <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
+      <a href="#certifications">Certificates</a>
     <a href="#contact">Hire Me</a>
   </div>
 </header>
@@ -866,11 +904,11 @@ footer a { color: var(--g); text-decoration: none; }
         <span class="stat-label">Projects Built</span>
       </div>
       <div class="stat-card reveal reveal-delay-1">
-        <span class="stat-num" data-target="12">0</span>
+        <span class="stat-num" data-target="20">0</span>
         <span class="stat-label">Technologies Known</span>
       </div>
       <div class="stat-card reveal reveal-delay-2">
-        <span class="stat-num" data-target="5">0</span>
+        <span class="stat-num" data-target="4">0</span>
         <span class="stat-label">Certifications</span>
       </div>
     </div>
@@ -881,26 +919,19 @@ footer a { color: var(--g); text-decoration: none; }
 <section id="skills">
   <div class="section-wrap">
     <div class="section-header reveal">
-      <span class="eyebrow">02 — Stack</span>
-      <h2 class="section-title">Technical <span>Competency Matrix</span></h2>
+      <span class="eyebrow">02 — Skills</span>
+      <h2 class="section-title">My <span>Skills</span></h2>
     </div>
     <div class="skills-grid">
       <div class="skill-card reveal">
         <div class="skill-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         </div>
-        <h3>Core Languages</h3>
-        <div class="bar-item">
-          <div class="bar-label"><span>Python</span><span>90%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>JavaScript</span><span>85%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>SQL</span><span>80%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="80"></div></div>
+        <h3>Programming Languages</h3>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/python/python-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Python</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Java</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">JavaScript</span>
         </div>
       </div>
       <div class="skill-card reveal reveal-delay-1">
@@ -908,48 +939,55 @@ footer a { color: var(--g); text-decoration: none; }
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <h3>Frontend</h3>
-        <div class="bar-item">
-          <div class="bar-label"><span>React.js</span><span>85%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>HTML5 / CSS3</span><span>95%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>Tailwind CSS</span><span>90%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="90"></div></div>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">HTML5</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">CSS3</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/react/react-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">React</span>
+          <span class="chip"><img class="logo-img inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nextjs/nextjs-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Next.js</span>
         </div>
       </div>
       <div class="skill-card reveal reveal-delay-2">
         <div class="skill-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
         </div>
         <h3>Backend</h3>
-        <div class="bar-item">
-          <div class="bar-label"><span>Node.js / Express</span><span>80%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="80"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>REST API Design</span><span>85%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-label"><span>Git / GitHub CI</span><span>85%</span></div>
-          <div class="bar-track"><div class="bar-fill" data-width="85"></div></div>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/nodejs/nodejs-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Node.js</span>
+          <span class="chip"><img class="logo-img inv" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/express/express-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Express.js</span>
         </div>
       </div>
-      <div class="skill-card reveal reveal-delay-3">
+      <div class="skill-card reveal">
         <div class="skill-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12a10 10 0 0 1 10-10z"/><path d="M12 6v6l4 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
         </div>
-        <h3>Special Vectors</h3>
-        <div class="tag-cloud">
-          <span class="tag">AI / Machine Learning</span>
-          <span class="tag">Rec-Systems</span>
-          <span class="tag">Intelligent Automation</span>
-          <span class="tag">LLM Integration</span>
-          <span class="tag">Data Pipelines</span>
+        <h3>Database</h3>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mongodb/mongodb-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">MongoDB</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3>Data Analysis</h3>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pandas/pandas-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Pandas</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/numpy/numpy-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">NumPy</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/seaborn/seaborn-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Seaborn</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/matplotlib/matplotlib-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Machine Learning</h3>
+        <div class="chip-row">
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/pytorch/pytorch-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">PyTorch</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/tensorflow/tensorflow-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">TensorFlow</span>
+          <span class="chip"><img class="logo-img" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/scikitlearn/scikitlearn-original.svg" alt="" onerror="this.style.display=&quot;none&quot;">Scikit-learn</span>
+          <span class="chip"><svg class="logo-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg>Regression Models</span>
         </div>
       </div>
     </div>
@@ -1094,7 +1132,7 @@ footer a { color: var(--g); text-decoration: none; }
         <div class="tl-content">
           <div class="tl-eyebrow">Degree Program</div>
           <div class="tl-title">B.Tech — Computer Science Engineering</div>
-          <div class="tl-sub">Specialization in Artificial Intelligence &amp; Machine Learning. Building intelligent systems from the ground up.</div>
+          <div class="tl-sub">Specialization in AI &amp; Machine Learning.</div>
         </div>
         <div class="tl-node-col">
           <div class="tl-node">
@@ -1114,8 +1152,8 @@ footer a { color: var(--g); text-decoration: none; }
         </div>
         <div class="tl-content">
           <div class="tl-eyebrow">Freelance Work</div>
-          <div class="tl-title">Independent Full Stack Developer</div>
-          <div class="tl-sub">Delivering end-to-end web solutions and AI-integrated applications for clients — from scoping and architecture to deployment and handoff.</div>
+          <div class="tl-title">Full Stack Developer</div>
+          <div class="tl-sub">Modern, high-impact website design with 2 months of free maintenance included.</div>
           <span class="tl-date">May 2026 — Present</span>
         </div>
       </div>
@@ -1125,8 +1163,8 @@ footer a { color: var(--g); text-decoration: none; }
         <div class="tl-content">
           <div class="tl-eyebrow">Open Source</div>
           <div class="tl-title">Open Source Contributor — GSSoC 2026</div>
-          <div class="tl-sub">Active contributor in GirlScript Summer of Code 2026 — collaborating on real-world open source projects, improving codebases, and shipping meaningful pull requests under mentorship.</div>
-          <span class="tl-date">May 2026 — Present</span>
+          <div class="tl-sub">Contributed to real-world open source projects and shipped pull requests under mentorship.</div>
+          <span class="tl-date">May 2026 — Aug 2026</span>
         </div>
         <div class="tl-node-col">
           <div class="tl-node">
@@ -1147,40 +1185,50 @@ footer a { color: var(--g); text-decoration: none; }
         <div class="tl-content">
           <div class="tl-eyebrow">Hackathon Arenas</div>
           <div class="tl-title">Technical Innovation Milestones</div>
-          <div class="tl-sub">Ideating and deploying rapid minimum viable architectures under high-pressure competitive environments — shipping real products in 24-48 hours.</div>
+          <div class="tl-sub">Built and shipped working prototypes under tight deadlines.</div>
         </div>
       </div>
 
-      <!-- Cybersecurity -->
-      <div class="tl-item reveal">
-        <div class="tl-content">
-          <div class="tl-eyebrow">Security Credentials</div>
-          <div class="tl-title">Cybersecurity Engineering Track</div>
-          <div class="tl-sub">Credentialed in application security validation, web threat modeling, compliance infrastructure, and defensive pipeline practices.</div>
-        </div>
-        <div class="tl-node-col">
-          <div class="tl-node">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-          </div>
-        </div>
-        <div class="tl-empty tl-content" aria-hidden="true"></div>
-      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- AI Certs -->
-      <div class="tl-item right reveal">
-        <div class="tl-empty tl-content" aria-hidden="true"></div>
-        <div class="tl-node-col">
-          <div class="tl-node">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          </div>
-        </div>
-        <div class="tl-content">
-          <div class="tl-eyebrow">AI Certifications</div>
-          <div class="tl-title">Machine Learning &amp; AI Specializations</div>
-          <div class="tl-sub">Formal certification programs covering supervised learning, neural networks, NLP, and AI system design for production environments.</div>
-        </div>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-wrap">
+    <div class="section-header reveal">
+      <span class="eyebrow">05 — Certifications</span>
+      <h2 class="section-title">Certificates &amp; <span>Achievements</span></h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal">
+        <div class="cert-top"><span class="cert-eyebrow">Microsoft Certification</span><svg class="cert-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div>
+        <h3 class="cert-title">Azure AI Apps and Agents Developer Associate</h3>
+        <p class="cert-sub">Microsoft Certified: Azure AI Apps and Agents Developer Associate (exam AI-103). Online verifiable via Microsoft Learn.</p>
+        <div class="cert-meta"><span>Credential ID: 302EEEB1BB52CFAB</span><span>Cert No: 188A5F-562AM4</span><span>Earned: Aug 29, 2026</span><span>Expires: Aug 29, 2027</span></div>
+        <a href="certificates/azure-ai-apps-agents-developer-associate.jpg" target="_blank" rel="noopener" class="cert-img-link"><img src="certificates/azure-ai-apps-agents-developer-associate.jpg" alt="Microsoft Certified: Azure AI Apps and Agents Developer Associate" loading="lazy"></a>
       </div>
-
+      <div class="cert-card reveal">
+        <div class="cert-top"><span class="cert-eyebrow">Hackathon · Runner Up</span><svg class="cert-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
+        <h3 class="cert-title">Build and Beyond — 2nd Position</h3>
+        <p class="cert-sub">Tech Nexus Club, K.R. Mangalam University. Awarded for outstanding performance and exemplary achievement.</p>
+        <div class="cert-meta"><span>Awarded: Oct 28, 2025</span><span>Ref: KRMU/DSW/2025/AW/0036</span></div>
+        <a href="certificates/build-and-beyond-2nd.jpg" target="_blank" rel="noopener" class="cert-img-link"><img src="certificates/build-and-beyond-2nd.jpg" alt="Build and Beyond 2nd position certificate" loading="lazy"></a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-top"><span class="cert-eyebrow">Hackathon · 3rd Place</span><svg class="cert-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
+        <h3 class="cert-title">Data Science Hackathon 3.0</h3>
+        <p class="cert-sub">Secured 3rd position (Team Penguins) at K.R. Mangalam University, Gurugram.</p>
+        <div class="cert-meta"><span>October 2026</span><span>IQAC · KEIC · IIC</span></div>
+        <a href="certificates/data-science-hackathon-3rd.jpg" target="_blank" rel="noopener" class="cert-img-link"><img src="certificates/data-science-hackathon-3rd.jpg" alt="Data Science Hackathon 3.0 certificate" loading="lazy"></a>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-top"><span class="cert-eyebrow">Open Source</span><svg class="cert-ico" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3 class="cert-title">GirlScript Summer of Code 2026</h3>
+        <p class="cert-sub">Certificate of Participation for contributions to GSSoC 2026, hosted by GirlScript Foundation.</p>
+        <div class="cert-meta"><span>GS Labs · GirlScript Foundation</span><span>2026</span></div>
+        <a href="certificates/gssoc-2026.png" target="_blank" rel="noopener" class="cert-img-link"><img src="certificates/gssoc-2026.png" alt="GirlScript Summer of Code 2026 certificate" loading="lazy"></a>
+      </div>
     </div>
   </div>
 </section>
@@ -1193,7 +1241,7 @@ footer a { color: var(--g); text-decoration: none; }
   <div class="section-wrap">
     <div class="contact-grid">
       <div class="reveal">
-        <span class="eyebrow">05 — Communications</span>
+        <span class="eyebrow">06 — Communications</span>
         <h2 class="contact-info" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.03em;margin:1rem 0;">
           Initialize a <span style="color:var(--g)">Connection</span>
         </h2>
@@ -1209,20 +1257,24 @@ footer a { color: var(--g); text-decoration: none; }
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             github.com/samarthsharma0910
           </a>
-          <a href="https://linkedin.com/in/samarth-sharma-03567936a" target="_blank" rel="noopener" class="contact-link">
+          <a href="https://www.linkedin.com/in/samarth-sharma-03567936a/" target="_blank" rel="noopener" class="contact-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
             linkedin.com/in/samarth-sharma-03567936a
+          </a>
+          <a href="https://leetcode.com/u/samarthsharma0910/" target="_blank" rel="noopener" class="contact-link">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/leetcode.svg" alt="" class="logo-img sm">
+            leetcode.com/u/samarthsharma0910
           </a>
         </div>
         <div class="socials">
           <a href="https://github.com/samarthsharma0910" target="_blank" rel="noopener" class="social-btn" aria-label="GitHub">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           </a>
-          <a href="https://linkedin.com/in/samarth-sharma-03567936a" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/samarth-sharma-03567936a/" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="#" class="social-btn" aria-label="Twitter">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          <a href="https://leetcode.com/u/samarthsharma0910/" target="_blank" rel="noopener" class="social-btn" aria-label="LeetCode">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.0.0/icons/leetcode.svg" alt="" class="logo-img">
           </a>
         </div>
       </div>
@@ -1252,7 +1304,7 @@ footer a { color: var(--g); text-decoration: none; }
             Send Message
           </button>
           <div id="form-success" style="display:none;margin-top:1rem;padding:0.75rem;background:rgba(0,255,136,0.08);border:1px solid rgba(0,255,136,0.2);border-radius:8px;font-family:var(--mono);font-size:0.75rem;color:var(--g);text-align:center;">
-            ✓ Message transmitted successfully. I'll respond within 24 hours.
+            ✓ Gmail opened with your message ready — just hit Send.
           </div>
         </form>
       </div>
@@ -1391,26 +1443,18 @@ const counterObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.stats-row').forEach(r => counterObs.observe(r));
 
-const grid = document.getElementById('contrib-grid');
-const levels = [0,1,2,3,4];
-const weights = [0.3, 0.25, 0.2, 0.15, 0.1];
-function weightedLevel() {
-  const r = Math.random();
-  let cum = 0;
-  for (let i = 0; i < levels.length; i++) {
-    cum += weights[i];
-    if (r < cum) return levels[i];
-  }
-  return 0;
-}
-for (let i = 0; i < 52 * 7; i++) {
-  const cell = document.createElement('div');
-  cell.className = 'contrib-cell c' + weightedLevel();
-  grid.appendChild(cell);
-}
-
 function handleSubmit(e) {
   e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const subject = document.getElementById('subject').value.trim() || 'Portfolio inquiry';
+  const message = document.getElementById('message').value.trim();
+  const body = message + '\n\n— ' + name + '\nReply to: ' + email;
+  const url = 'https://mail.google.com/mail/?view=cm&fs=1'
+    + '&to=' + encodeURIComponent('samarthsharma4109@gmail.com')
+    + '&su=' + encodeURIComponent(subject)
+    + '&body=' + encodeURIComponent(body);
+  window.open(url, '_blank', 'noopener');
   document.getElementById('form-success').style.display = 'block';
   e.target.reset();
 }
